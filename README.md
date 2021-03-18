@@ -1,3 +1,4 @@
 # Recycler_View Task_3
 ### App screenshot
-![](./task_3.png)
+![](./1.png)
+![](./2.png)
