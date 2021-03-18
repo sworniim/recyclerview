@@ -35,8 +35,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                int wordListSize = mWordList.size();
+                // Add a new word to the wordList.
+                mWordList.addLast("+ Word " + wordListSize);
+                // Notify the adapter, that the data has changed.
+                mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
+                // Scroll to the bottom.
+                mRecyclerView.smoothScrollToPosition(wordListSize);
             }
         });
         for (int i = 0; i < 20; i++) {
@@ -44,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Get a handle to the RecyclerView.
-        mRecyclerView = findViewById(R.id.RecyclerView);
-// Create an adapter and supply the data to be displayed.
+        mRecyclerView = findViewById(R.id.Recyclerview);
+        // Create an adapter and supply the data to be displayed.
         mAdapter = new WordListAdapter(this, mWordList);
-// Connect the adapter with the RecyclerView.
+        // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
-// Give the RecyclerView a default layout manager.
+        // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
